@@ -42,7 +42,28 @@
 <!-- Your community, and what your classifier sorts posts into. Three or four
      sentences. -->
 
+My community is r/playstation, a public subreddit with about 2 million
+members. It covers the whole platform rather than a single game or release,
+so there is no spoiler problem tied to one title's launch window.
 
+Reddit blocks scripts from my network, and the API now requires approval I
+don't have. So I logged into Reddit in my browser, ran searches, and saved
+the resulting JSON pages by hand into `data/raw/`. `scripts/parse_raw.py`
+reads those pages, keeps only real self posts from r/playstation (dropping
+ads, stickied posts, mod megathreads, and posts with too little text), and
+dedupes the result. That took 343 raw posts down to 269 after filtering.
+
+Reading through those 269, four candidate distinctions stood out as things I
+could actually point at in the text:
+
+1. Whether a specific fact is carrying the argument, or is just decoration on
+   a conclusion the writer already had.
+2. Whether the post is about something that just happened to the writer,
+   versus a general claim about the platform or the industry.
+3. Whether the post offers any support for its claim, or is a bare
+   assertion.
+4. Whether the post is asking a question or looking for help, rather than
+   making a claim at all.
 
 ---
 
