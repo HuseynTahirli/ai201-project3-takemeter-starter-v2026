@@ -340,6 +340,12 @@ scripts (`scripts/collect.py`, `scripts/parse_raw.py`).
 
 ---
 
+## Baseline Prediction
+
+I think the trained model will beat the baseline most on `hot_take` and `share`, because those two depend on how I drew the lines in my own labels, and a general model reading one-line definitions won't know that. I expect the baseline to do fine on `question`.
+
+---
+
 ## Baseline vs. Trained
 
 <!-- Both models on the same posts. `python baseline.py --trained results.json`

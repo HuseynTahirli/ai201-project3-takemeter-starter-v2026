@@ -1,10 +1,4 @@
-# Your label definitions, one per line, as `label: definition`.
-#
-# Copy these from your README so the baseline is judged on exactly the
-# definitions you wrote. baseline.py reads this file.
-#
-# Delete the examples below and put yours in.
-
-analysis: makes an argument backed by a specific, checkable fact
-hot_take: a confident claim with no support offered
-reaction: an immediate response to something that just happened
+question: The main point is to get an answer from the community, in the form of help, info, or a recommendation.
+analysis: Makes a claim and backs it with something checkable, like a price, a date, a number, a specific game detail, or a quote.
+hot_take: Makes a claim or complaint with no checkable support. Rants land here.
+share: The writer tells about something that happened to them or how they feel, without arguing a claim beyond their own experience and without asking for an answer.
