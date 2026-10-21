@@ -353,10 +353,14 @@ I think the trained model will beat the baseline most on `hot_take` and `share`,
 
 | Measure | Baseline | Trained | Difference |
 |---|---|---|---|
-| Overall accuracy |  |  |  |
-| Macro F1 |  |  |  |
-| F1 — `label_one` |  |  |  |
-| F1 — `label_two` |  |  |  |
+| Overall accuracy | 0.220 | 0.439 | +0.220 |
+| Macro F1 | 0.163 | 0.153 | -0.011 |
+| F1 — `analysis` | 0.300 | 0.000 | -0.300 |
+| F1 — `hot_take` | 0.154 | 0.000 | -0.154 |
+| F1 — `question` | 0.200 | 0.610 | +0.410 |
+| F1 — `share` | 0.000 | 0.000 | +0.000 |
+
+The baseline was run with `label_definitions.txt` on `test_split.csv`.
 
 **What I predicted before I looked:**
 <!-- Milestone 1 asks you to write this BEFORE seeing the trained numbers. A

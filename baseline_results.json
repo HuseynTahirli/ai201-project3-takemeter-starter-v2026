@@ -1,0 +1,245 @@
+{
+  "model": "facebook/bart-large-mnli",
+  "n": 41,
+  "seed": 42,
+  "held_out": true,
+  "used_definitions": true,
+  "scores": {
+    "n": 41,
+    "accuracy": 0.21951219512195122,
+    "f1_macro": 0.16346153846153844,
+    "per_label": {
+      "analysis": {
+        "precision": 0.17647058823529413,
+        "recall": 1.0,
+        "f1": 0.3,
+        "support": 6
+      },
+      "hot_take": {
+        "precision": 0.3333333333333333,
+        "recall": 0.1,
+        "f1": 0.15384615384615383,
+        "support": 10
+      },
+      "question": {
+        "precision": 1.0,
+        "recall": 0.1111111111111111,
+        "f1": 0.19999999999999998,
+        "support": 18
+      },
+      "share": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 7
+      }
+    }
+  },
+  "predictions": [
+    {
+      "text": "How many games do you play at once?\nNot sure if this is just me, but I like to have a variety of games I can play at any time, so I\u2019ll often have 4-8 (often more) single player games going at the same time.\n\nI know some people find this weird, but I\u2019ve always done it - I find it easy to switch and pick back up on the story and controls etc \n\nI guess it\u2019s no different from watching multiple TV shows at once, which is something everyone does \ud83e\udd37\u200d\u2642\ufe0f",
+      "gold": "question",
+      "predicted": "share"
+    },
+    {
+      "text": "What is your biggest \u201cI can\u2019t believe I haven\u2019t played this yet\u201d game in your backlog?\nLike a lot of us, I have an embarrassingly large backlog. Littered with titles that are generally considered really good to great, the biggest probably being The Witcher 3. I planned on finally jumping into that world recently, then another expansion was announced. So I\u2019m putting it off a little longer. What is your biggest \u201cI can\u2019t believe I haven\u2019t played this yet\u201d title?  ",
+      "gold": "question",
+      "predicted": "analysis"
+    },
+    {
+      "text": "The microphone on the PS5 controller is the worst idea ever.\nI initially thought it was so awesome the mic was included in all the controllers. \n\nNow I find myself just muting all every single match, and taking to teammates even less. \n\nScreaming families, beeping smoke detectors, music blasting and hearing your sticks clicking makes for a very unenjoyable experience.\n\n\nMaking the setting to default as muted and you press to unmute would solve this complaint completely. \n\n\nThe issue isn't the mic itself, but that it's on by default and people don't seem to know this or they don't care to turn it off gracing our ears to the chaos of their background noise and frantic controller clicking. \n\nOpen mic issues are multitudes worse than before and I hate it. \n\n*Edit*\n\nI'm just going to say this straight forward since it seems to be going over a lot of people's heads here. \n\nI know you can default to mute everyone always. That is NOT what I want. \n\nI have had groups where people want to communicate but there is always someone with music blasting in the background. When mentioned they have an open mic, people generally don't seem to care or ignore your comments. \n\nHaving the mic muted by default, and you have to press the button once to unmute would prevent this. I feel like a lot of people don't realize the controller mic does actually pick up a LOT of background noise. ",
+      "gold": "analysis",
+      "predicted": "analysis"
+    },
+    {
+      "text": "It only took 2 minutes for my neighbors to steal my PS5 ):\nHopefully this is allowed, but I need my fellow PlayStation owners to console me (pun intended lol)\n\nComing home from visiting parents. Literally two minutes to carry cats upstairs to our floor, then come back down. Poof. Suitcase with ps5 in it is nowhere to be seen. Big effin sad. \n\nI know it\u2019s our fault for trusting that we could leave something for 2 minutes inside our supposedly safe and gated apartment complex, but alas the world gave me another valuable life lesson. \n\nAlready filed an online police report (police can\u2019t do anything because of course), deactivated my consoles, and even removed passkey and reverted to password + Authenticator. Pretty sure that last step wasn\u2019t necessary, but I needed the peace of mind. \n\nAnything else I should take care of?\n",
+      "gold": "question",
+      "predicted": "analysis"
+    },
+    {
+      "text": "I've subscribed to PS+ for nearly a decade and I can't afford it now.\nI've been paying for it since about a year after Overwatch originally came out and this month is my last month I'm paying for it. I actually can't afford it and I'm genuinely sad (not asking for hand outs) I just want to know what will happen when gaming becomes too expensive?  I never thought I'd be in a position where I have to pick gas for my car over renewing my subscription and it's only going to get worse. ",
+      "gold": "hot_take",
+      "predicted": "share"
+    },
+    {
+      "text": "I'm 31 and I always play my games on the easiest difficulty.\nMy life is a mess and I work a dead-end job full of toxic colleagues and rude customers, so I really don't want that level of stress and anger bleed over into my gaming time. And I am not ashamed of playing on Easy mode. I don't know why there's such a stigma towards people that do.",
+      "gold": "share",
+      "predicted": "analysis"
+    },
+    {
+      "text": "Confession about ps plus\nDuring black Friday, they had the deal for the ps plus premium and I felt like I couldn't lose out on this so I bought the annual subscription and I just wanted to say that i haven't even tried to play the games that they offer, I also have my ps portal which I feel like I should take advantage more, which I don't. I feel stupid. Don't want to make any excuses that maybe I work a lot or whatever. I just wanted to let that out since I got no one to talk about stuff like this\ud83d\ude2d",
+      "gold": "share",
+      "predicted": "hot_take"
+    },
+    {
+      "text": "Control: Resonant is the Prototype remake we deserved but never got\nI am deeply enjoying Remedy Entertainments latest outing. As I was throwing myself across the manhatten skyline i felt immediately like I was back in ps3 era PROTOTYPE! the weapon play, movement and fluid gameplay fills me with nostalgia!\n\nMember PROTOTYPE? I member...!",
+      "gold": "hot_take",
+      "predicted": "analysis"
+    },
+    {
+      "text": "Crimson Desert on the Base PS5?\nGaming has felt so dead to me lately and I've been looking for something to play for a long time. I play on a LG C1 tv and have heard a lot about Crimson Desert. It had such mixed reviews at the start, some saying performance and the visual aspects on the base PS5 is not good etc. Also, it's almost 80$ here.\n\nIs this game worth buying? How does it perform on your base PS5? How is it visually?\n\n  \nThank you guys for all comments btw, appreciate it. I ended up buying it and will try it tonight. ",
+      "gold": "question",
+      "predicted": "analysis"
+    },
+    {
+      "text": "What\u2019s your goty so far ?\nHey everyone! I\u2019m very curious to see yall\u2019s picks for the GOTY since we\u2019re getting closer and closer to the game awards.\n\nYes we have not gotten GTA VI yet, that could be a blowout, but i feel like we haven\u2019t gotten a game this year that stood out massively and was the clear runner up, like in 2022 with Elden Ring, 2023\u2019s Baldur\u2019s Gate or last year\u2019s Expedition 33. \n\nMine for now are RE9 and 007 ( can\u2019t choose one for now ). I think Onimusha might get up there for me after i\u2019m done with it, the main character has so much charm to him.\n\nBonus Question : What upcoming game ( in 2026 ) do you think deserves a shout ? ( except for GTA VI ) ",
+      "gold": "question",
+      "predicted": "analysis"
+    },
+    {
+      "text": "Just panic bought my PS5 Pro\nAfter hearing about the recent price increases planned for April 2nd I went ahead and pulled the trigger.  I was on the fence but heavily leaning toward a purchase before GTA 6 and Sony went and forced my hand. Kinda felt like now or never for me lol. \n\nWhat's people experience with the Pro so far? Is PSSR everything it's made out to be? ",
+      "gold": "question",
+      "predicted": "analysis"
+    },
+    {
+      "text": "Finished The Last of Us Part II and MAN do I have some thoughts\nI just finished playing The Last of Us Part II after a journey of about 50 hours. I thought the first part of The Last of Us was amazing, but this game might be in another level. Even though the game is four and a half years old now, I still put the warning of spoilers because I know that many people, like me, haven\u2019t played it yet.\n\nLet me start by saying that the story is excellent and the acting and direction of game is the same. Graphics, playability, and cut scenes are as good as I\u2019ve seen. As far as story is concerned\u2026 I understand why some people didn\u2019t like it because I was ready to HATE the rest of the game after what happens in the beginning.\n\nSo, the main thing I want to talk about really are my feelings about half way through the game. So, here are my thoughts in a bit of a ramble.\n\nHonestly, when I started the game and started to play as Abby, I was thinking \u201cMAN, did Ellie get BUFF for THIS game!!\u201d. After a couple of minutes I realized I was playing with another character, of course.\n\nThen Joel is killed and I screamed at my poor tv and PS5, damning developers, directors, voice actors, programmers, designers, the catering company, EVERYONE.\n\nI started my revenge journey and it ROCKED.\n\nHalfway through the game I started my Abby story and that must have been about five days ago or so. And I remember thinking and actually SAYING \u201cNoooo, I don\u2019t want to be HER!!!! She killed Joel! NO.\u201d I remember playing and thinking \u201cthis is gonna be quick, some backstory and that\u2019s it\u201d. And then it kept going and going and GOING. I remember even letting myself die a couple of time just because that\u2019s what I wanted to happen to HER.\n\nI started thinking about WHY she might have done what she did. My first thought was that she was the daughter of that horrible cannibal that Ellie killed in part one. I kept going with that thought thinking that she\u2019s gonna get what she deserves.\n\nThen I find out that Joel killed her father, the doctor about to operate on Ellie\u2026 and kill her in the process, of course. And I clearly remember that when I was playing that part in the end of The Last of Us and the doctor attacks me with a scalpel, I wanted to KNOCK HIM OUT. NOT kill him. And then I saw that he dies and I thought \u201cserves him right for trying to kill my little girl, no matter the world-saving reasons for it\u201d. I\u2019m 51 years old, so of course I had started thinking about Ellie as a daughter throughout all that first game.\n\nAnd so I find out that Abby kills Joel because he had not only killed her father but also had killed humanity\u2019s hope. And I STILL thought \u201cit doesn\u2019t matter\u2026 I\u2019m sad for her, I UNDERSTAND HER, but I\u2019m going with Ellie, no matter what happens. Joel deserves revenge/justice\u201d.\n\nAnd then Lev comes along. And I grew to like him and Abby\u2019s relationship with him, how she does absolutely everything to protect him.\n\nAfter the fight in the theater between Ellie and Abby, I\u2019m back home, and there\u2019s the baby, and Dina, and I thought \u201ccool\u2026 it\u2019s a nice ending\u201d. And then the biggest, blindest revenge story comes along.\n\nI was rooting for Abby and Lev by then, but also for Ellie, of course. And then in the final fight\u2026 I stopped pressing the square button\u2026 and I DIE. I thought \u201cdamn\u2026 there\u2019s no other way around this, is there? Revenge has to take place, no matter how much of your humanity goes with it.\u201d\n\nIn the end, I find myself alone in an empty house with all these thoughts of \u201cyou had a FAMILY and you LOST IT for revenge.\u201d I was a bit angry. I pick up the guitar, and started to play, not realizing why it sounded so bad and then I remember her missing fingers. As somebody who has played guitar for over 30 years, that really hurt, too.\n\nThe end left me feeling sad, not confused, but definitely sad, hoping Abby and Lev can find a place to call their own, far away from monsters, both human and ex-human.\n\nBut I also want Abby to find Dina and JJ again, for her to ask forgiveness. To let it go and find happiness in what remains of the world.\n\nOk, so, ramble over. I\u2019ve played other games in which I play as both the good guy and bad guy but I\u2019ve NEVER been as invested in it until this game. To me, the developers hit it out of the park. I guess this\u2019ll be one of those games which you don\u2019t forget about, ever. It hit me in many different levels.",
+      "gold": "hot_take",
+      "predicted": "analysis"
+    },
+    {
+      "text": "What is a game that reviewers called bad, but you played and found out it was actually amazing?\nafter all the reviews about wolverine it made me think about this questions. i managed to get a copy early and honestly i loved the game really enjoyed it was fun",
+      "gold": "question",
+      "predicted": "analysis"
+    },
+    {
+      "text": "PS5 owners, I'd love your opinions - Is it even worth having a disc drive?\nI bought a PS5 Slim Digital Edition and I'm getting the disc drive as a Christmas present, but, is it worth it?\n\n\\- I like how slim the console is (I have it standing upright) and I do like not having to putting discs in and I like how silent it all runs, but,\n\n\\-I do like finding a game at a much better price. I don't particulary care about having physcial media anymore, it kinda feels like a losing battle. I already have a Blu-Ray player and don't need a 4K disc player. I don't have any PS4 games on disc or plan to buy any.\n\nSo my question is, for those who already have a disc drive for the PS5, whats your opinion on this? Do you find the 'deals' on discs arent really that much of a saving, and does the noise bother you more after running games off the SSD. What's your opinion.\n\nI feel like this is when laptops lost having disc drives and when my phone lost its 3.5 jack slot, I thought I'd care more but I ended up prefering it.",
+      "gold": "question",
+      "predicted": "analysis"
+    },
+    {
+      "text": "Don't give in. Boycott scalpers. They are feeling it, and it's getting to them.\nThis is working. I'm seeing on my facebook local marketplace the price of PS5's coming down. A week ago, everything was in the 800-1000. Now I'm consistently seeing prices in the $600-700 range. But I'm not going to buy.  Guys--there aren't that many games out. There is NO reason to buy in just yet. These guys are going to get screwed, and they KNOW it. Scalpers are tossing and turning \"Do I return it? Do I hold out? What if they restock?\" **Make their lives hell.** DONT BUY--there is light at the end of the tunnel and we are starting to wear them down.\n\n**Follow up to a few comments here and there:**\\-------------------------------------------------------------------------1)\"But dude--capitalism? Supply & Demand? Free Market?\"  \n\"Supply and demand\" applies when consumers have an even playing field and equal access to the goods. Scalpers now use bots to cheat the line. They are literally stealing the supply to make the demand *appear* high. That's like being in an auction house, but your mouth is taped shut by scalpers who get the first and last bid thanks to a bot. Who thinks that's fair and should be legal?\n\n2) You should get a bot.  \nBots are the problem here. 99% of scalpers are not writing their own scripts. They're buying them from 'legitimate' companies and it's totally legal! But that doesn't change the fact that they are profiting by allowing scalpers to cheat the line. Sounds pretty scummy to me. Why is the bar for everything these days based on legality? What happened to..I dunno..don't be a shithead? (/s).\n\n3) Prices are still high around me...and I really need it for X / Y / Z reasons.  \nTake the money you would have spent and subtract 500 from it. Think hard about what *else* you could buy and *still have enough left over for a PS5*. Was it meant to be a gift? I'll tell you what's a better gift--COLD HARD CASH.\n\nAnd last but not least, to the scalpers commenting, you are in fact thieves. The legality is not the issue here.**You're a thief.** Keep laughing and enjoying your cash--I don't care. You didn't earn that profit. You stole it. You're not a \"hustler\", you're a grifter. Stop lying to yourself.",
+      "gold": "analysis",
+      "predicted": "analysis"
+    },
+    {
+      "text": "What was your first ever platinum trophy on a game?\nI remember my first platinum was Need for Speed 2015 on the PlayStation 4. Probably because it was a relatively easier one to achieve. ",
+      "gold": "question",
+      "predicted": "analysis"
+    },
+    {
+      "text": "Cash App offer has ended\nFor anyone who hasn\u2019t used their offer yet, it\u2019s expired now. If you try to use it to purchase something you will be charged full price so don\u2019t do it. Figured I\u2019d save people the trouble of having to refund.",
+      "gold": "analysis",
+      "predicted": "analysis"
+    },
+    {
+      "text": "Do you still hold down the PS button?\nEvery time I want to turn my game or controller off, I end up holding down the center button and wonder what\u2019s wrong. But then I realize it\u2019s not a PS4 but a 5. Does anyone else have phantom movements from old shit you used to do?",
+      "gold": "hot_take",
+      "predicted": "analysis"
+    },
+    {
+      "text": "Been with Xbox for over 20 years. Just got a PS5 and holy crap I had no idea what I was missing.\nI\u2019ve had the first Xbox, the 360, the One, the One X, and now the Series X. I\u2019ve loved them all, but I've always wanted to play the PS exclusives. I finally pulled the trigger and got a PS5. I\u2019ve been loving it. I\u2019ve sampled God of War: Ragnarok, GoT, Spidey, Horizon, and Last of Us. Uncharted is in the queue. My biggest wow came from something I never expected, the controller. IT FELT LIKE I UNSHEATHED A KATANA!\n\nAnyway, I just wanted to say I\u2019m looking forward to joining this community and making new friends.\n\nEDIT: You guys keep mentioning Bloodborne, so it\u2019s added to the list.",
+      "gold": "hot_take",
+      "predicted": "analysis"
+    },
+    {
+      "text": "Anyone here who still has a base model PS5 and have no interest in upgrading to a Pro?\nI've heard so much talk about how great the Pro model is and how people should upgrade. But I wonder how many people here are content with using the original base model?\n\n**Tried posting this in r/PS5 but it got removed for some reason**",
+      "gold": "question",
+      "predicted": "analysis"
+    },
+    {
+      "text": "Recommend some games to enjoy when life is kicking your butt and you are always tired.\nTired dad here, looking for recommendations in what you enjoy playing when you are physically and mentally tired.\n\nEdit: I appreciate the kind words that some of you are saying, but I am not in a bad spot, just always tird in the evening from working alot, trying to raise kids and navigate the same crazy world the rest of you are. But the mental fatigue does make it hard to enjoy things. I've been playing KCD2 since launch. It's a fantastic game but a bit complex to enjoy when tird. I want to spend less doom scrolling social media and the PS Store sales and actually finish stuff so looking for some recommendations. ",
+      "gold": "question",
+      "predicted": "question"
+    },
+    {
+      "text": "I just impulsively bought a PS5 the limited edition gold Ghost  of Yotei edition and a couple games\nPick up in the morning from Walmart . Definitely excited about this purchase. The games I also got was GTA V , Spiderman Miles Morales Ultimate Edition with the Spiderman Remastered included and Resident Evil 3 remake. Haven\u2019t had a PS since the PS2 days so Happy early birthday and Merry Christmas to me \u2026 I\u2019m excited to say the least apparently ! ",
+      "gold": "share",
+      "predicted": "analysis"
+    },
+    {
+      "text": "Wolverine posts.\nCan we have some sort of mega thread about wolverine, rather than 100s of posts about how people just got it but other people don't like the game without playing, please? ",
+      "gold": "hot_take",
+      "predicted": "hot_take"
+    },
+    {
+      "text": "Why is split screen so underused?\nI'm honestly curious, playing split screen with my friends gave me so many great memories, but when I try to play new split screen games now there's barely any games that have it, they're all online multiplayer or single player games, why is it so underused? ",
+      "gold": "question",
+      "predicted": "analysis"
+    },
+    {
+      "text": "What is the most immersive game you have ever played?\na game where the combination of textures, design, music, etc.. pulls you in so hard you lose yourself for some time\n\ni can say for me lately it was Death Stranding, extremely unique experience, will love to hear other opinions here",
+      "gold": "question",
+      "predicted": "question"
+    },
+    {
+      "text": "So annoyed with myself (for being silly)\nI got a Playstation Portal for Christmas and have come away for a few days to visit family. Even though I checked all the remote play settings on my PS5 and left it in rest mode I didn't check the Wake from Network setting and it is evidently not enabled \ud83e\udd26.\n\nOh well, I'll have to actually socialise \ud83d\ude02.",
+      "gold": "share",
+      "predicted": "hot_take"
+    },
+    {
+      "text": "I may sound like an old geezer, but I grew up in the Xbox 360 era and gaming today feels way less social. Maybe it's just me?\nI\u2019ve been wanting to recapture the social gaming of my youth and I\u2019ve tried several MMOs I used to play, and that ain\u2019t it, Master Chief. How do yall make games a social experience nowadays?",
+      "gold": "question",
+      "predicted": "analysis"
+    },
+    {
+      "text": "PS5's new system feature update?\nJust checked on console and there is new system feature update to download (not a classic system update but the different one). I wonder what it might be. Maybe it's the new UI that some people got it? But then again when I downloaded it, nothing has changed. I thought it's OTA thing that will appear over time without need for an additional update? Weird, anyone can check it manually since afaik it doesn't auto download like classic OS updates.  \nSETTINGS->SYSTEM->SYSTEM SOFTWARE->SYSTEM FEATURE UPDATES",
+      "gold": "question",
+      "predicted": "analysis"
+    },
+    {
+      "text": "My PS4 is gonna arrive tomorrow and I'm so fuckin thrilled\nThis been a dream for me to own a PlayStation ever since I was a kid and finally I got a job this year, saved money and finally placed the order yesterday.\n\nFor some reason, my parents always hated PlayStation ( and video games in general) because they feel I might get addicted to it. When I told them yesterday that I was about to buy one, they lectured me for an hour how I wasted my money and how it's going to destroy my life blah blah blah and almost made me feel guilty for buying it.\n\n\nAnyways, that's all I wanted to say. Super Excited",
+      "gold": "share",
+      "predicted": "analysis"
+    },
+    {
+      "text": "Battlefield hardline is getting removed from the PlayStation store on May 22. All the DLC\u2026 Gone.\nI\u2019m glad I bought it when I did\u2026 unlike a lot of people I actually like the campaign mode. The multiplayer mode is going to be gone since we will no longer be able to buy servers.",
+      "gold": "analysis",
+      "predicted": "analysis"
+    },
+    {
+      "text": "My dad got a PS3 over an Xbox because of the Blu-Ray drive when I was a kid\nI say this as as someone who is currently playing my blu-ray version of the extended edition of LOTR the Two Towers on my PS5. The only drive I have in my living room to watch my blu-ray movies.\n\nThe 1080p quality looks like Netflix 4K.\n\nNot only are they stealing our right to own games, but they're taking away all physical media.\n\nHorrible decision Sony, I canceled my PS Plus renewal just in time. The annual plan renewed next month.\n\nEdit: stupid Apple IOS autocorrect ",
+      "gold": "hot_take",
+      "predicted": "analysis"
+    },
+    {
+      "text": "My 4K tv broke and I can\u2019t believe the difference going back to 1080p\nI was wondering if anyone else had experienced this. I finally managed to save up for a PS5 and was blown away by the graphics, then a month later my 4k tv broke. Incredibly annoying, but went back to my 1080p tv of a similar size.\n\nIt\u2019s probably obvious, but going from experiencing 4k to my old tv is genuinely like going back to PS4 games. I didn\u2019t expect the graphical difference to be truly that noticeable. I kind of wish I\u2019d never played it on a 4k, as now I know what it should look like, it\u2019s brutal haha. I probably wouldn\u2019t have noticed otherwise.\n\nGenuinely considering not playing the finite amount of ps5 games out there until I can afford a 4k tv again. Was wondering if anyone else had been forced to downgrade like myself and if for them the difference was that big, or if it\u2019s just me?",
+      "gold": "question",
+      "predicted": "analysis"
+    },
+    {
+      "text": "A shout-out to gamer parents.\nThe kids are asleep.\n\nThe wifey/spouse fell asleep.\n\nThe house is clean enough and laundry is folded and mine is put away.\n\nShould I watch a show?\n\nNah....\n\nBEEEEEEEP!!!!\n\nEdit:  it's a PS4.  No setting to disable beep.",
+      "gold": "share",
+      "predicted": "analysis"
+    },
+    {
+      "text": "Expedition 33 is a masterpiece\nI\u2019m late to the party as I didn\u2019t play this game on release! The game is brilliant and if you haven\u2019t played it I would highly recommend it. The story is amazing and the scenes in the game are top class. If you like a challenging game the highest difficulty is great, so it is both a good challenge and an amazing story. If you don\u2019t like a tough challenge, then it is still a great time. ",
+      "gold": "hot_take",
+      "predicted": "analysis"
+    },
+    {
+      "text": "why do you own a digital edition ps5?\n[according to this insider gaming article, digital edition ps5\u2019s make up 18% of ps5 sales.](https://insider-gaming.com/disc-editions-make-up-82-of-all-ps5-console-sales/)\n\nI was interested in knowing the proportion after the recent news about disc sales\n\ni have a digital edition because I wasn\u2019t able to find a disc edition at the time, when it already took months of waiting to see any PS5s in the market listed at MSRP\n\nso, out of curiosity, if you are also among the 18%, why did you get a digital edition? ",
+      "gold": "question",
+      "predicted": "analysis"
+    },
+    {
+      "text": "Sony should offer a new tier for just Online and cloud saves\nI would love llike a 20 dollar tier that only offered online and cloud saves. Those are the two features i use a lot anyway. 80 dollars to just play the games i already paid for is way too steep",
+      "gold": "hot_take",
+      "predicted": "analysis"
+    },
+    {
+      "text": "Thinking to try a soulslike game for the first game. Which one to choose?\nWhat soulslike game is good for a person who has  never played difficult combat games?\n\nRecently I have started to dig witcher 3s combat that I never liked before being trying the game numerous times earlier. But, now I find it addictive.\n\nI am thinking slaying monster-ish things will be next thing I would like to try.",
+      "gold": "question",
+      "predicted": "analysis"
+    },
+    {
+      "text": "MASSIVE Announcements for PSVR2 today. Official ports of High on Life and System Shock (Flat2Vr Studios)\nAs a huge VR fan (I have quest 3, PSVR 1, PSVR 2 and a 5090FE with PIMAX Dream Air SLAM):\n\n**This was a huge day for fans of VR and specifically PSVR2 Fans. I am not affiliated with this in any way.**\n\nDuring the VR Games Showcase ( [https://youtu.be/3n7EMtE4tpc?si=Q\\_PYCZfCS7jQ-6zS](https://youtu.be/3n7EMtE4tpc?si=Q_PYCZfCS7jQ-6zS) ) there were some incredible announcements overall.\n\nSpecifically there is a new initiative by independent developer and publisher Flat2VR Studios for the PlayStation \"Vault\" program where they will focus on brining high quality ports and IP's to PS5 and PSVR2 and specifically focusing on utilizing the unique features of the headset -- HDR, Advanced controller haptics, adaptive triggers, eye-tracked dynamic foveated rendering, headset rumble, etc).\n\nThe forward faces who will \"unlock\" the upcoming vaults and future announcements will be familiar faces: Shuhei Yoshida, Mystic Ryan, Bryan Paul (PSVR Without Parole), Rob Pearson (Official Playstation Access), and more to follow.\n\nThe first title announced was co-op Zombie survival \"Drop Dead: The Cabin\"\n\nEven more CRAZY is the new IP's Flat2VR has been able to greenlight.\n\nToday they announced Official Ports to PSVR2 of \"High on Life\" and \"System Shock\" (I believe the remaster). All to take full advantage of PSVR2 features.\n\n**One of the most overlooked things about this headset is the features for the price. Not only can it be used on PS5 but it has official and aftermarket adapters for PCVR.**\n\nIt is crazy good for $300 which it is currently on-sale for. In this economy everything else is shooting up in price, especially tech. I have literally thousands of hours in my PSVR2.\n\nMy Favorite PSVR2 Announcements of the day:\n\nHigh on Life:\n\n[https://youtu.be/U9Kcs-XALBA?si=djODu7UAygCJsV53](https://youtu.be/U9Kcs-XALBA?si=djODu7UAygCJsV53)\n\nSystem Shock:\n\n[https://youtu.be/w-baA9y0Ld0?si=fB2GyE\\_XJjBWF2-G](https://youtu.be/w-baA9y0Ld0?si=fB2GyE_XJjBWF2-G)\n\nBootstrap Island (Shadow dropped today):\n\n[https://youtu.be/3nrjIcCMY24?si=5OQsvXELQMI4lkB7](https://youtu.be/3nrjIcCMY24?si=5OQsvXELQMI4lkB7)\n\nZero Caliber 2 (October Release -- Think COD in VR):\n\n[https://youtu.be/nv\\_ZL\\_AOpUI?si=ZbezsKSTJe-dtU2M](https://youtu.be/nv_ZL_AOpUI?si=ZbezsKSTJe-dtU2M)\n\n  \nEdit: Honorable Mention -- Omega Pilot Evolution (Wipeout inspired):\n\n[https://www.youtube.com/watch?v=P34vqUqU0SE](https://www.youtube.com/watch?v=P34vqUqU0SE)\n\nAnyhow, as a guy with the best VR headsets and GPU money can buy, the PSVR2 is criminally underrated and this shit looks fucking amazing.",
+      "gold": "analysis",
+      "predicted": "analysis"
+    },
+    {
+      "text": "How I solved my pulse elite error CE-102159-8 not connecting/update error in seconds\nMy PULSE Elite was working normally until yesterday, but today it started showing **error CE-102159-8**, along with PS Link connection errors.  \nThe solution was:  \nConect the headset via cable \u2192 **Open the menu on PS5 \u2192 Settings \u2192 Accessories \u2192 General \u2192 PlayStation Link \u2192 Update Device Software**  \nI updated the software/firmware for **both the PULSE Elite headset and the PS Link USB adapter**. After that, everything started working normally again.  \n**I didn\u2019t have to reset the headset or the USB adapter.**  \nSo if your PULSE Elite suddenly stopped working, it\u2019s worth checking for a PS Link update before trying more drastic troubleshooting steps.",
+      "gold": "analysis",
+      "predicted": "analysis"
+    },
+    {
+      "text": "Craziest September/October ever?\nWolverine\n\nMw4\n\nControl resonant\n\nOnimusha\n\nSilent hill townfall\n\nRayman\n\nBlood of dawnwalker\n\nDune awakening\n\nStar wars racer\n\nFifa\n\nEither or both halo and gears\n\nJust to name the ones i know of, im sure 1 or 2 will be pushed back but omg crazy month.\n\nPlus whatever Nintendo launch on there own platform (ocarina of time remake)\n\nAll releasing in September/ October and not everything is announced is actually mad\n\nEdit: ace combat 8 to!!\n\nAnd runescape dragon wilds on ps plus\n\nPhantom blade 0",
+      "gold": "hot_take",
+      "predicted": "analysis"
+    },
+    {
+      "text": "This new announcement just gave PS5 5 extra years\nSo I was thinking that when PS6 would come I would wait a couple of years to get it like I did for PS5. But maybe this decision is a blessing in disguise. I will keep buying physical PS5 games until I have played the most I can from the good PS5 games, then continue buying second hand PS4 games etc. This way it will last me the next 5 years minimum (I don't wanna say decade) since I am a slow player ",
+      "gold": "share",
+      "predicted": "analysis"
+    }
+  ]
+}
