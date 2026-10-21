@@ -363,12 +363,10 @@ I think the trained model will beat the baseline most on `hot_take` and `share`,
 The baseline was run with `label_definitions.txt` on `test_split.csv`.
 
 **What I predicted before I looked:**
-<!-- Milestone 1 asks you to write this BEFORE seeing the trained numbers. A
-     prediction made afterwards isn't one. -->
+I thought the trained model would beat the baseline most on hot_take and share, and that the baseline would do fine on question.
 
 **What the gap actually means:**
-<!-- If the baseline matched your trained model, your fine-tuning added
-     nothing — and that is a real finding, not a failure. Say it plainly. -->
+The trained model scored 0.439 accuracy against the baseline's 0.220, but that gain is not real learning. 18 of the 41 test posts are question, and 18/41 is 0.439, so the model appears to predict question for almost everything. Macro F1 is about the same (0.153 trained vs 0.163 baseline), and the trained model got 0.000 F1 on analysis, hot_take, and share. My prediction was wrong. The baseline was bad at everything, and the trained model was only good at the biggest class.
 
 
 
