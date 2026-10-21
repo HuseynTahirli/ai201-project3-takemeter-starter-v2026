@@ -118,6 +118,27 @@ land here.
 > sometimes. I'm not trying to wear out the buttons on my $200 DualSense
 > Edge so I can win arm wrestling."
 
+### `share`
+
+**Definition:** The writer tells about something that happened to them or
+how they feel, without arguing a claim beyond their own experience and
+without asking for an answer.
+
+**Example 1:**
+> "Had to say Rest In Peace to my PS3... After two days i was told she is
+> 'unfixable'. It sucks because it boots up, the sounds are there but i just
+> can't see anything. Ugh, heart is broken."
+
+**Example 2:**
+> "It's a rather sad day. I pulled my PS3 out, got it all set up, turned it
+> on, and was met with a screen I never wanted to see. HDD finally crapped
+> out... I've just had this one since 2009."
+
+**A note on where this label came from:** I added `share` after noticing
+that about a quarter of the posts I read were personal stories or
+celebrations, like "I finally bought a PS5," that did not fit `question`,
+`analysis`, or `hot_take`.
+
 ### The hardest boundary
 
 **Which two labels:** `question` vs `hot_take`.
@@ -146,6 +167,18 @@ I added this rule after the stress test found a hole. Post #5 in
 then jumps to a conclusion the number doesn't actually support. The fact is
 there, but it isn't doing the work, so the post is `hot_take`, not
 `analysis`.
+
+**A third hardest boundary:** `share` vs `hot_take`.
+
+**The decision rule I used every time:** If the post makes a judgment about
+a game, company, or thing beyond "how I felt," it's `hot_take` (or
+`analysis` if a fact is the reason for that judgment). If it stays on the
+writer's own experience, it's `share`.
+
+**A fourth hardest boundary:** `share` vs `question`.
+
+**The decision rule I used every time:** If a personal story ends with a
+real ask that a fact or recommendation could answer, it's `question`.
 
 ---
 

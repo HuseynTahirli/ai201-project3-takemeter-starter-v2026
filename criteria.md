@@ -63,12 +63,13 @@ much from about 190 training posts.
 
 ## 2.
 
-Every label (question, analysis, hot_take) has an F1 of at least **0.55** on
-the test set.
+Every label (question, analysis, hot_take, share) has an F1 of at least
+**0.55** on the test set.
 
 **Why this target:** analysis will be my smallest label with only a few test
-examples, so one or two misses move it a lot. 0.55 is still clearly better
-than chance for 3 labels.
+examples, so one or two misses move it a lot. share is new and may also turn
+out small once it's counted. 0.55 is still clearly better than chance for 4
+labels.
 
 ---
 
