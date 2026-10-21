@@ -75,35 +75,77 @@ could actually point at in the text:
      The decision rule is worth a point on its own and it's the thing most
      people leave out. Every taxonomy has a hardest boundary. Name yours. -->
 
-### `label_one`
+### `question`
 
-**Definition:**
-
-**Example 1:**
->
-
-**Example 2:**
->
-
-### `label_two`
-
-**Definition:**
+**Definition:** The main point is to get an answer from the community, in
+the form of help, info, or a recommendation.
 
 **Example 1:**
->
+> "Help! I want to gift my bf a PS5 for his birthday but I don't know which
+> one to get... I want to know which one to get him... just want to make
+> sure he can play GTA6 on it when it releases."
 
 **Example 2:**
->
+> "Just Bought a PS5... Anyone got any game recommendations?"
+
+### `analysis`
+
+**Definition:** Makes a claim and backs it with something checkable, like a
+price, a date, a number, a specific game detail, or a quote.
+
+**Example 1:**
+> "ps5 pro is $1400 in Australia... base ps5 is $1000 and ps5 pro is $1400.
+> Im pretty sure when ps5 released, it was around $700... and when ps5 pro
+> released, it was $1150."
+
+**Example 2:**
+> "The time in between each PlayStation unveiling. PS1 (10/27/93) -> PS2
+> (9/20/99) - 5y, 10m, 24d... PS4 -> PS5 (4/16/19) - 6y, 1m, 27d. Currently,
+> it's been 6y, 9m, 11d since the PS5 unveiling."
+
+### `hot_take`
+
+**Definition:** Makes a claim or complaint with no checkable support. Rants
+land here.
+
+**Example 1:**
+> "Am I the only one that would love a 'Buy a game for a friend' option on
+> the PlayStation store?... the hassle of buying a PSN card... seems like a
+> much crappier option."
+
+**Example 2:**
+> "Can't stand it when games make you mash the button as fast as possible
+> sometimes. I'm not trying to wear out the buttons on my $200 DualSense
+> Edge so I can win arm wrestling."
 
 ### The hardest boundary
 
-**Which two labels:**
+**Which two labels:** `question` vs `hot_take`.
 
-**The decision rule I used every time:**
-<!-- e.g. "If the post names a specific checkable fact, it's `analysis`, even
-     if the tone is heated." -->
+**The decision rule I used every time:** If the ask can be answered with a
+fact or a fix, it's `question`. If it's an opinion followed by "anyone
+else?" or "am I the only one?", it's `hot_take`.
 
+**The rule in action, on a real borderline post:**
+> "PS5 music is lonely? Does anyone else get a sudden wave of loneliness
+> right when they quit a game and hear that PS5 menu music?"
 
+This is grammatically a question, and it even has a question mark twice. But
+there is no fact or fix that answers it. The writer is not asking for help,
+they are sharing a feeling and inviting others to say they feel it too. By
+the rule, that makes it `hot_take`, not `question`.
+
+**A second hardest boundary:** `analysis` vs `hot_take`.
+
+**The decision rule I used every time:** A fact only counts if it's the
+reason for the claim. A number that doesn't support the conclusion is
+decoration, and the post is `hot_take`.
+
+I added this rule after the stress test found a hole. Post #5 in
+`data/stress_test.md` states a real sales number for Elden Ring Nightreign,
+then jumps to a conclusion the number doesn't actually support. The fact is
+there, but it isn't doing the work, so the post is `hot_take`, not
+`analysis`.
 
 ---
 
