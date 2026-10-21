@@ -65,6 +65,9 @@ could actually point at in the text:
 4. Whether the post is asking a question or looking for help, rather than
    making a claim at all.
 
+The classifier sorts posts into four labels: `question`, `analysis`,
+`hot_take`, and `share`.
+
 ---
 
 ## Label Taxonomy
@@ -187,19 +190,31 @@ real ask that a fact or recommendation could answer, it's `question`.
 <!-- Where you collected from, how you labelled, your counts, and three hard
      cases. -->
 
-**Where the posts came from:**
+**Where the posts came from:** r/playstation text posts. Reddit blocks
+scripts from my network, and API apps now need approval I don't have, so I
+logged into Reddit in my browser, ran searches, and saved the result pages
+as JSON by hand. `scripts/parse_raw.py` parsed those pages and filtered out
+ads, image posts, mod and stickied posts, posts that were too short or
+deleted, and duplicates. That took 343 raw posts down to 269.
 
-**How I labelled them:** <!-- Cold first? Pre-labelled with AI and corrected?
-Say so plainly — the disclosure is required, not penalised. -->
+**How I labelled them:** None of these were labelled cold by me. The first
+20 (the cold20 sample) were labelled by Claude in chat, noted
+`claude_label` in labels.csv. The remaining 249 were pre-labelled by Claude
+Code under my taxonomy and decision rules, noted `ai_prelabel`. I did not
+review the pre-labels row by row.
 
 **Counts per label:**
 
 | Label | Count | Share |
 |---|---|---|
-|  |  |  |
-|  |  |  |
-|  |  |  |
-| **Total** |  | 100% |
+| `question` | 118 | 43.9% |
+| `hot_take` | 63 | 23.4% |
+| `share` | 47 | 17.5% |
+| `analysis` | 41 | 15.2% |
+| **Total** | 269 | 100% |
+
+`analysis` is the thinnest label, with only about 6 posts landing in the
+test split. Its F1 will be jumpy in Unit 6 because of that.
 
 **Three hard cases**
 
@@ -207,25 +222,44 @@ Say so plainly — the disclosure is required, not penalised. -->
      been, and what you chose. These are worth more than the easy 190. -->
 
 **1.**
-> *The post:*
+> *The post:* "Should I feel bad?... There are many games that I haven't
+> played yet or just haven't finished... I'm wondering if other people feel
+> the same way. Do you care to beat a game that's not fun or might be too
+> big? How often do you guys actually finish a game?"
 >
-> *Could have been:*
+> *Could have been:* `share` or `question`
 >
-> *I chose, because:*
+> *I chose, because:* It reads mostly like a personal reflection on an
+> unfinished backlog, and the closing questions feel more like venting out
+> loud than a real ask a fact or recommendation could answer. I called it
+> `share`.
 
 **2.**
-> *The post:*
+> *The post:* "UK Parliment Petition to aquire legal protections for
+> consumers on their video games... An official parliment petition has been
+> created to go against Playstation's recent statement to stop production
+> of physical discs. Please sign to have a real governing body take
+> action... [link to petition]"
 >
-> *Could have been:*
+> *Could have been:* `analysis` or `hot_take`
 >
-> *I chose, because:*
+> *I chose, because:* It reads like a share-this call to action, but the
+> petition itself, its wording, and the link are the checkable fact the
+> whole post exists to deliver. I called it `analysis`.
 
 **3.**
-> *The post:*
+> *The post:* "GTA 6 isn't 'too advanced' for Current Gen, Devs Just Wasted
+> Current-Gen's Potential... How many true 'next-gen' exclusives have we
+> seen that look drastically better than PS4/Xbox One titles? Very few...
+> So no, GTA 6 isn't 'too advanced' for PS5 or Xbox Series X, it's just the
+> first major game to prove what these consoles were always capable of."
 >
-> *Could have been:*
+> *Could have been:* `analysis` or `hot_take`
 >
-> *I chose, because:*
+> *I chose, because:* It makes a developer-effort argument, but the
+> "evidence" (how few true next-gen exclusives we've seen) is a rhetorical
+> impression, not a specific checkable number. The fact isn't really
+> load-bearing, so I called it `hot_take`.
 
 ---
 
@@ -233,17 +267,29 @@ Say so plainly — the disclosure is required, not penalised. -->
 
 <!-- Your starting model, your settings, and anything you changed and why. -->
 
-**Base model:**
+**Base model:** `distilbert-base-uncased`
 
-**Settings:** <!-- epochs, learning rate, batch size, seed -->
+**Settings:** 3 epochs, learning rate 2e-5, batch size 16, max length 128,
+seed 42.
 
-**Anything I changed from the defaults, and why:**
+**Anything I changed from the defaults, and why:** Nothing. All settings
+are the notebook's defaults.
 
-**Split sizes:** <!-- train / val / test, and per-label counts in the test
-split. If a label had fewer than about 8 in test, say so — it explains a lot
-of next unit's variance. -->
+**Device:** CPU (torch 2.14.1+cpu), recorded in `results.json`.
 
+**Split sizes:** train 187, val 41, test 41 (70/15/15 of 269 rows).
 
+Per-label counts in the test split:
+
+| Label | Train | Val | Test |
+|---|---|---|---|
+| `question` | 82 | 18 | 18 |
+| `hot_take` | 43 | 10 | 10 |
+| `share` | 33 | 7 | 7 |
+| `analysis` | 29 | 6 | 6 |
+
+`analysis` and `share` both have fewer than 8 examples in the test split,
+so their F1 scores will move around a lot between seeds.
 
 ---
 
@@ -258,17 +304,34 @@ of next unit's variance. -->
 
 **Moment 1**
 
-- *What I asked for:*
-- *What came back:*
-- *What I changed:*
+- *What I asked for:* Claude wrote 8 made-up posts sitting right on my
+  label boundaries, as a stress test of the taxonomy, with no answers
+  given.
+- *What came back:* Post #5 was a sales figure for Elden Ring Nightreign
+  followed by a conclusion the number didn't actually support. Under my
+  original taxonomy that would have counted as `analysis`, since it had a
+  checkable fact in it.
+- *What I changed:* I added a decision rule: a fact only counts if it's
+  the reason for the claim. A number that doesn't support the conclusion
+  is decoration, and the post is `hot_take`.
 
 **Moment 2**
 
-- *What I asked for:*
-- *What came back:*
-- *What I changed:*
+- *What I asked for:* I had Claude pull and read 20 random real posts
+  (cold20) from the collected data so I could look for patterns before
+  finalizing labels.
+- *What came back:* About a quarter of those 20 were personal stories or
+  celebrations, like "I finally bought a PS5," that didn't fit `question`,
+  `analysis`, or `hot_take`.
+- *What I changed:* I added a fourth label, `share`, with its own
+  definition and two new decision rules against `hot_take` and `question`.
 
-**Pre-labelling disclosure:**
+**Pre-labelling disclosure:** Claude drafted the five acceptance criteria
+in `criteria.md` and I reviewed them. Claude labeled all 20 cold20 posts in
+chat (`claude_label`). Claude Code then pre-labeled the remaining 249 posts
+under my taxonomy and decision rules (`ai_prelabel`), and I did not review
+those row by row. Claude Code also wrote the collection and parsing
+scripts (`scripts/collect.py`, `scripts/parse_raw.py`).
 
 <!-- ═══════════════════════ UNIT 6 — THE TEST ═══════════════════════
 
