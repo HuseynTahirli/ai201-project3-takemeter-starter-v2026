@@ -53,61 +53,52 @@ whether you hit them:
 
 ## 1.
 
-<!-- Your criterion. It must name a number. -->
+Overall accuracy is at least **0.70** on the held-out test set.
 
-
-
-**Why this target:**
-
-
+**Why this target:** Always guessing "question" gets about 0.56, so 0.70
+beats that by enough to show the model learned something, without asking too
+much from about 190 training posts.
 
 ---
 
 ## 2.
 
-<!-- Your criterion. -->
+Every label (question, analysis, hot_take) has an F1 of at least **0.55** on
+the test set.
 
-
-
-**Why this target:**
-
-
+**Why this target:** analysis will be my smallest label with only a few test
+examples, so one or two misses move it a lot. 0.55 is still clearly better
+than chance for 3 labels.
 
 ---
 
 ## 3.
 
-<!-- Your criterion. -->
+No label is more than **65%** of labels.csv.
 
-
-
-**Why this target:**
-
-
+**Why this target:** question is already near 60%. The brief caps it at 70,
+but at 65 the model can already lean on guessing question and look decent.
 
 ---
 
 ## 4.
 
-<!-- Your criterion. -->
+On the 30 staff posts, my labels under the staff taxonomy match the staff
+labels on at least **21 of 30 (70%)**.
 
-
-
-**Why this target:**
-
-
+**Why this target:** it's someone else's taxonomy so I expect misses on
+borderline posts, but under 70% would mean I can't apply a written rule
+consistently.
 
 ---
 
 ## 5.
 
-<!-- Your criterion. -->
+The most-confident third of test predictions is at least **0.15** more
+accurate than the least-confident third (from results.json confidence).
 
-
-
-**Why this target:**
-
-
+**Why this target:** if sure guesses aren't clearly better than unsure ones,
+the confidence score is useless for flagging posts.
 
 ---
 
