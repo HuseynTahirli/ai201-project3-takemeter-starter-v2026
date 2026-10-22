@@ -377,29 +377,21 @@ The trained model scored 0.439 accuracy against the baseline's 0.220, but that g
 <!-- Five criteria across three seeds. The notebook's section 6 prints the
      spread table; the Target and Verdict columns are yours. -->
 
-| Criterion | Target | Seed 42 | Seed 7 | Seed 2024 | Verdict |
-|---|---|---|---|---|---|
-| 1.  |  |  |  |  |  |
-| 2.  |  |  |  |  |  |
-| 3.  |  |  |  |  |  |
-| 4.  |  |  |  |  |  |
-| 5.  |  |  |  |  |  |
+The run used the cpu device with seeds 42, 7, and 2024.
+
+Run log table goes here after criteria are checked.
 
 ### Confusion matrix
 
-<!-- ⚠️ TYPED AS A MARKDOWN TABLE. The notebook prints one ready to paste.
-     An image of a matrix earns nothing. -->
-
-| true \ predicted |  |  |  |
-|---|---|---|---|
-| **** |  |  |  |
-| **** |  |  |  |
-| **** |  |  |  |
+| true \ predicted | question | analysis | hot_take | share |
+|---|---|---|---|---|
+| **question** | 18 | 0 | 0 | 0 |
+| **analysis** | 6 | 0 | 0 | 0 |
+| **hot_take** | 10 | 0 | 0 | 0 |
+| **share** | 7 | 0 | 0 | 0 |
 
 **My biggest off-diagonal number, and what it means:**
-<!-- Not "the model made mistakes" — WHICH boundary it didn't learn, and which
-     direction. "7 real analysis posts were called hot_take and only 3 went the
-     other way" is a direction, not just an error rate. -->
+The biggest confusion is 10 real hot_take posts called question, but the model predicted question for all 41 test posts, so every other label was confused with question.
 
 
 
