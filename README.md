@@ -333,6 +333,8 @@ under my taxonomy and decision rules (`ai_prelabel`), and I did not review
 those row by row. Claude Code also wrote the collection and parsing
 scripts (`scripts/collect.py`, `scripts/parse_raw.py`).
 
+**Unit 6 improvement disclosure:** Claude Code diagnosed the undertraining from the before-run loss numbers and ran the after run (10 epochs, three seeds). Claude helped plan the improvement.
+
 **Staff set disclosure:** Claude, not me, labeled the 30 posts in
 `my_staff_labels.csv` under the staff taxonomy. I did not label them myself.
 So the agreement rate below says how well Claude applies the staff rules, not
@@ -426,7 +428,7 @@ The biggest confusion is 10 real hot_take posts called question, but the model p
 | 2 | Lowest per-label F1 | at least 0.55 | MISSED | Three labels (analysis, hot_take, share) have F1 0.000 on every seed. Only question clears 0.55, at 0.610. |
 | 3 | Largest label share | at most 65% | MET | The biggest label is question at 43.87%, well under 65%. |
 | 4 | Staff agreement | at least 21 of 30 | MET | 30 of 30 on one measurement. |
-| 5 | Confident third vs unsure third | at least 0.15 | MET | The gap is 0.538, 0.231 and 0.462, so every seed is above 0.15. Technically met but hollow, see the diagnosis. |
+| 5 | Confident third vs unsure third | at least 0.15 | MET | The gap is 0.538, 0.231 and 0.462, so every seed is above 0.15. Technically met but hollow in the before run, see the diagnosis. After run: met for real, see Run Log — After. |
 
 **Diagnoses**
 
@@ -434,15 +436,15 @@ The agreement check had 0 disagreements, so it can't be used as evidence for or 
 
 **C1 and C2 have the same main cause: undertraining. Thin analysis and share data is a contributing factor.**
 
-- *The loss barely moved.* The run was about 187 training posts at batch 16 for 3 epochs, which is 12 steps per epoch and 36 steps in total. The loss numbers from the before run (training loss is logged at steps 10, 20 and 30, eval loss at the end of each epoch):
+- *The loss barely moved.* The run was about 187 training posts at batch 16 for 3 epochs, which is 12 steps per epoch and 36 steps in total. The loss numbers from the before run (training loss is logged at steps 10, 20 and 30, validation loss at the end of each epoch. The validation set is the separate 15% validation split, not the test split):
 
-| Seed | Train loss (step 10, 20, 30) | Eval loss (epoch 1, 2, 3) | Average train loss |
+| Seed | Train loss (step 10, 20, 30) | Validation loss (epoch 1, 2, 3) | Average train loss |
 |---|---|---|---|
 | 42 | 1.348, 1.259, 1.229 | 1.275, 1.234, 1.216 | 1.259 |
 | 7 | 1.342, 1.278, 1.217 | 1.279, 1.238, 1.222 | 1.273 |
 | 2024 | 1.349, 1.256, 1.250 | 1.270, 1.228, 1.214 | 1.268 |
 
-  Random guessing across 4 labels gives a loss of about 1.386 (ln 4). Predicting the label shares in labels.csv every time gives about 1.29. Training started near 1.35 and finished near 1.22 on every seed, so it only just got below the "guess the label shares" level. That is not enough movement to learn anything past always saying question. Eval accuracy was 0.439 and macro F1 was 0.153 at every epoch on every seed, so nothing changed in the predictions at any point.
+  Random guessing across 4 labels gives a loss of about 1.386 (ln 4). Predicting the label shares in labels.csv every time gives about 1.29. Training started near 1.35 and finished near 1.22 on every seed, so it only just got below the "guess the label shares" level. That is not enough movement to learn anything past always saying question. Validation accuracy was 0.439 and validation macro F1 was 0.153 at every epoch on every seed, so nothing changed in the predictions at any point.
 - *The matrix:* the model put all 41 test posts in question on every seed. The true counts in the test split are question 18, hot_take 10, share 7 and analysis 6. So 10 hot_take, 7 share and 6 analysis posts were all called question, and nothing was ever predicted as analysis, hot_take or share. This is the model sitting on the majority label because it never got enough steps to move off it.
 - *Accuracy is just the question share of the test set (C1):* always guessing question gets 18 of 41, which is 0.439, the same as the model. criteria.md estimated always-question at about 0.56. That estimate came from a rough question-mark count during planning and was wrong. On the real test split it is 0.439, so the model did no better than that guess. I did not edit criteria.md.
 - *Why not a labeling problem on one boundary:* an inconsistent boundary would show up as two labels swapping, like hot_take and analysis. The matrix has no swaps because the model never predicts those labels at all.
@@ -452,6 +454,8 @@ The agreement check had 0 disagreements, so it can't be used as evidence for or 
 **C3 and C4 were met, so no diagnosis.**
 
 **C5 is technically MET but hollow.** Every seed is above 0.15, so by the rule I wrote it is met. But the model predicts question for every post, so the confidence only measures how question-like a post looks, not whether the model knows when it is right. The most-confident third is just the posts that look most like questions, and those are the ones the all-question guess gets right. With 13 posts per third it is also a weak signal. I'm not counting this as evidence that the confidence score is useful.
+
+**C5 after the improvement:** it is MET for real. The after model predicts all four labels, and the gap between the most-confident third and the least-confident third is 0.385, 0.462 and 0.385, so the confidence now separates right guesses from wrong ones better than before. It is still only 13 posts per third.
 
 
 
@@ -491,24 +495,60 @@ instead.
 
 ## The Improvement
 
-**What I changed:**
+**What I changed:** EPOCHS went from 3 to 10. Nothing else changed. Learning rate 2e-5, batch size 16, max length 128, the labels and labels.csv are all the same as the before run.
 
-**Which diagnosis pointed at it:**
+**Which diagnosis pointed at it:** the before run predicted question for every post. The loss only went from about 1.35 to about 1.22 over 36 steps, which is barely below the level of just guessing the label shares, so the diagnosis was undertraining. 10 epochs is 120 steps.
+
+Seed 42 loss per epoch in the after run. Train loss is the latest value logged by the end of that epoch. Validation loss and accuracy are on the separate 15% validation split, not the test split.
+
+| Epoch | Train loss | Validation loss | Validation accuracy |
+|---|---|---|---|
+| 1 | 1.344 | 1.266 | 0.439 |
+| 2 | 1.251 | 1.204 | 0.439 |
+| 3 | 1.185 | 1.133 | 0.439 |
+| 4 | 1.048 | 1.080 | 0.561 |
+| 5 | 0.946 | 1.021 | 0.585 |
+| 6 | 0.849 | 0.961 | 0.610 |
+| 7 | 0.742 | 0.913 | 0.610 |
+| 8 | 0.724 | 0.895 | 0.610 |
+| 9 | 0.642 | 0.888 | 0.683 |
+| 10 | 0.618 | 0.873 | 0.634 |
+
+The model sat on the all-question guess for the first 3 epochs and started to move off it at epoch 4.
 
 ### Run Log — After
 
 | Criterion | Target | Seed 42 | Seed 7 | Seed 2024 | Verdict |
 |---|---|---|---|---|---|
-| 1.  |  |  |  |  |  |
-| 2.  |  |  |  |  |  |
-| 3.  |  |  |  |  |  |
-| 4.  |  |  |  |  |  |
-| 5.  |  |  |  |  |  |
+| C1 Overall accuracy | at least 0.70 | 0.585 | 0.463 | 0.610 | MISSED |
+| C2 Lowest per-label F1 | at least 0.55 | 0.200 (share) | 0.250 (hot_take) | 0.400 (hot_take) | MISSED |
+| C3 Largest label share in labels.csv | at most 65% | question 43.87% (118 of 269) | same, labels.csv does not change by seed | same | MET |
+| C4 Staff agreement | at least 21 of 30 | 30 of 30 | same, one measurement | same | MET |
+| C5 Accuracy of most-confident third minus least-confident third | at least 0.15 | 0.846 - 0.462 = 0.385 | 0.692 - 0.231 = 0.462 | 0.769 - 0.385 = 0.385 | MET |
 
-**Did it help, and how do I know:**
+Before vs after, averaged across the three seeds:
 
-<!-- If it didn't, say so. Relabelling that didn't help is a genuinely
-     interesting result and earns full credit. -->
+| Measure | Before | After | Difference |
+|---|---|---|---|
+| Accuracy | 0.439 | 0.553 | +0.114 |
+| Macro F1 | 0.153 | 0.498 | +0.345 |
+| F1 question | 0.610 | 0.681 | +0.071 |
+| F1 analysis | 0.000 | 0.626 | +0.626 |
+| F1 hot_take | 0.000 | 0.350 | +0.350 |
+| F1 share | 0.000 | 0.333 | +0.333 |
+
+**Did it help, and how do I know:** Yes, it got the model off the all-question guess, and every label now has an F1 above zero, but it still missed C1 and C2. Accuracy moved 0.146 across the three seeds (0.463 to 0.610), which is over 10 points, so with only 41 test posts this measure is unstable.
+
+After confusion matrix, seed 42:
+
+| true \ predicted | question | analysis | hot_take | share |
+|---|---|---|---|---|
+| **question** | 16 | 0 | 1 | 1 |
+| **analysis** | 1 | 3 | 2 | 0 |
+| **hot_take** | 5 | 0 | 4 | 1 |
+| **share** | 3 | 0 | 3 | 1 |
+
+The biggest off-diagonal number is 5 real hot_take posts called question, so the model still leans toward question on that pair.
 
 
 
@@ -516,13 +556,20 @@ instead.
 
 ## What's Still Broken
 
-<!-- For each criterion still missed: what you'd do, and why you stopped. -->
+**C1 (accuracy at least 0.70) and C2 (every label F1 at least 0.55) are still missed.** The best seed got 0.610 accuracy and the lowest per-label F1 was 0.200, 0.250 and 0.400 across the seeds. Share and hot_take are the weak labels.
 
+What I'd do next:
 
+- Collect more hot_take and share examples. Share has 47 posts and hot_take has 63 in labels.csv, with only 7 and 10 of them in the test split.
+- Relabel the share vs hot_take vs question boundaries using `data/hard_cases.md`. 16 of the 31 hard cases are on question pairs, so that is where the labels are fuzziest.
+- Then train again and see if the weak labels come up.
+
+Why I stopped: this unit allows one improvement, and I used it on the training length because the loss numbers pointed straight at it. More data and relabeling would be a second change.
 
 **The gap between what I meant my labels to capture and what the model
 learned:**
-<!-- Two sentences. Your confusion matrix is the evidence. -->
+
+I meant share to be personal stories about the writer's own experience, but in the seed 42 matrix the model splits them between question (3) and hot_take (3) and only gets 1 of 7 right. So it probably learned surface cues like question marks and strong wording instead of whether the post is about the writer's own experience.
 
 
 
