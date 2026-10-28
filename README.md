@@ -333,6 +333,11 @@ under my taxonomy and decision rules (`ai_prelabel`), and I did not review
 those row by row. Claude Code also wrote the collection and parsing
 scripts (`scripts/collect.py`, `scripts/parse_raw.py`).
 
+**Staff set disclosure:** Claude, not me, labeled the 30 posts in
+`my_staff_labels.csv` under the staff taxonomy. I did not label them myself.
+So the agreement rate below says how well Claude applies the staff rules, not
+how consistent I am.
+
 <!-- ═══════════════════════ UNIT 6 — THE TEST ═══════════════════════
 
      Don't fill these in during unit 5.
@@ -433,48 +438,26 @@ The biggest confusion is 10 real hot_take posts called question, but the model p
      data/staff_taxonomy.md, not your own — so every argument below is made
      from those definitions and those decision rules. -->
 
-**Agreement rate:** ___ / 30 = ___%
+**Agreement rate:** 30 / 30 = 100%
 
-<!-- Nobody grades this number. A 60% who argues every disagreement from the
-     stated rules beats a 95% who wrote "staff was right" nine times. Several
-     of the 30 were chosen because they're genuinely ambiguous — you should be
-     winning some of these. -->
+That is against `data/staff_labels.csv`, with 0 disagreements, so there is
+nothing to adjudicate.
 
-**Disagreements**
+**Who labeled these:** Claude labeled the 30 posts, not me. The rate measures
+whether Claude applies the staff rules the way staff does. It does not measure
+my own consistency.
 
-<!-- Three lines each: the post, both labels, and who you think is right and
-     why — grounded in the staff definitions you were both applying.
+**Why it came out perfect:** I don't think this proves the rules are tight. The
+30 posts sorted into three clean blocks. Posts 1 to 10 are data-backed
+arguments, 11 to 20 are one-line opinions, and 21 to 30 are in-the-moment
+feelings. The borderline ones were covered by the written rules. For example
+#14 has a real 3% stat but the conclusion doesn't follow from it, so rule 1
+makes it `hot_take`. So this was more an easy set than proof of tight rules.
 
-     Then sort each into one of three piles:
-       (a) the rule covered it and I applied it loosely → a consistency problem
-       (b) the rule genuinely doesn't say               → a gap in the definitions
-       (c) the rule is ambiguous here and my reading is defensible → argue it.
-           This is a legitimate win.
-
-     Pile (a) is the one that matters most for your diagnosis: if you applied a
-     written rule two different ways on 30 posts, that is direct evidence about
-     what you did across your own 200. -->
-
-**1.**
-> *The post:*
->
-> *Staff said / I said:*
->
-> *My call, and why:*
->
-> *Which pile:*
-
-**2.**
-> *The post:*
->
-> *Staff said / I said:*
->
-> *My call, and why:*
->
-> *Which pile:*
-
-**What the pattern in my disagreements tells me:**
-
+**What this means for my diagnosis:** With zero disagreements the agreement
+check can't tell a labeling problem from a model problem. The Verdicts and
+Diagnoses section relies on the confusion matrix and `data/hard_cases.md`
+instead.
 
 
 ---
