@@ -384,7 +384,20 @@ The trained model scored 0.439 accuracy against the baseline's 0.220, but that g
 
 The run used the cpu device with seeds 42, 7, and 2024.
 
-Run log table goes here after criteria are checked.
+| Criterion | Target | Seed 42 | Seed 7 | Seed 2024 | Verdict |
+|---|---|---|---|---|---|
+| C1 Overall accuracy | at least 0.70 | 0.439 | 0.439 | 0.439 | MISSED |
+| C2 Lowest per-label F1 | at least 0.55 | 0.000 (analysis, hot_take, share all tied) | 0.000 (analysis, hot_take, share all tied) | 0.000 (analysis, hot_take, share all tied) | MISSED |
+| C3 Largest label share in labels.csv | at most 65% | question 43.87% (118 of 269) | same, labels.csv does not change by seed | same | MET |
+| C4 Staff agreement | at least 21 of 30 | 30 of 30 | same, one measurement | same | MET |
+| C5 Accuracy of most-confident third minus least-confident third | at least 0.15 | 0.692 - 0.154 = 0.538 | 0.615 - 0.385 = 0.231 | 0.615 - 0.154 = 0.462 | MET |
+
+Notes on the table:
+
+- All three seeds gave the same confusion matrix. The model predicted question for all 41 test posts every time, so accuracy is exactly 18 of 41. Question is the only label with a nonzero F1, at 0.610.
+- C3 is about labels.csv, so it is the same number for every seed. The other label shares are hot_take 23.42% (63), share 17.47% (47) and analysis 15.24% (41).
+- C4 is one measurement, not three. It does not depend on the seed.
+- C5 uses 13 posts per third, so one post moves a third by 7.7 points. Seed 7 is the thinnest pass at 0.231.
 
 ### Confusion matrix
 
@@ -409,22 +422,36 @@ The biggest confusion is 10 real hot_take posts called question, but the model p
 
 | # | Criterion | Target | Verdict | How I decided |
 |---|---|---|---|---|
-| 1 |  |  |  |  |
-| 2 |  |  |  |  |
-| 3 |  |  |  |  |
-| 4 |  |  |  |  |
-| 5 |  |  |  |  |
+| 1 | Overall accuracy | at least 0.70 | MISSED | 0.439 on all three seeds, so it fails every seed. |
+| 2 | Lowest per-label F1 | at least 0.55 | MISSED | Three labels (analysis, hot_take, share) have F1 0.000 on every seed. Only question clears 0.55, at 0.610. |
+| 3 | Largest label share | at most 65% | MET | The biggest label is question at 43.87%, well under 65%. |
+| 4 | Staff agreement | at least 21 of 30 | MET | 30 of 30 on one measurement. |
+| 5 | Confident third vs unsure third | at least 0.15 | MET | The gap is 0.538, 0.231 and 0.462, so every seed is above 0.15. Technically met but hollow, see the diagnosis. |
 
 **Diagnoses**
 
-<!-- For each miss: the cause, and how you know. The four common causes are:
-     too few examples for a label, a boundary you applied inconsistently, a
-     genuinely hard label pair, and a task the model can't reach from this
-     much data.
+The agreement check had 0 disagreements, so it can't be used as evidence for or against a labeling problem here. The diagnosis below rests on the confusion matrix, the test split counts and `data/hard_cases.md`.
 
-     ⚠️ Use your agreement report as evidence. It is the only instrument you
-     have that can tell a LABELLING problem from a MODEL problem, and this
-     section is graded on whether you used it that way. -->
+**C1 and C2 have the same main cause: undertraining. Thin analysis and share data is a contributing factor.**
+
+- *The loss barely moved.* The run was about 187 training posts at batch 16 for 3 epochs, which is 12 steps per epoch and 36 steps in total. The loss numbers from the before run (training loss is logged at steps 10, 20 and 30, eval loss at the end of each epoch):
+
+| Seed | Train loss (step 10, 20, 30) | Eval loss (epoch 1, 2, 3) | Average train loss |
+|---|---|---|---|
+| 42 | 1.348, 1.259, 1.229 | 1.275, 1.234, 1.216 | 1.259 |
+| 7 | 1.342, 1.278, 1.217 | 1.279, 1.238, 1.222 | 1.273 |
+| 2024 | 1.349, 1.256, 1.250 | 1.270, 1.228, 1.214 | 1.268 |
+
+  Random guessing across 4 labels gives a loss of about 1.386 (ln 4). Predicting the label shares in labels.csv every time gives about 1.29. Training started near 1.35 and finished near 1.22 on every seed, so it only just got below the "guess the label shares" level. That is not enough movement to learn anything past always saying question. Eval accuracy was 0.439 and macro F1 was 0.153 at every epoch on every seed, so nothing changed in the predictions at any point.
+- *The matrix:* the model put all 41 test posts in question on every seed. The true counts in the test split are question 18, hot_take 10, share 7 and analysis 6. So 10 hot_take, 7 share and 6 analysis posts were all called question, and nothing was ever predicted as analysis, hot_take or share. This is the model sitting on the majority label because it never got enough steps to move off it.
+- *Accuracy is just the question share of the test set (C1):* always guessing question gets 18 of 41, which is 0.439, the same as the model. criteria.md estimated always-question at about 0.56. That estimate came from a rough question-mark count during planning and was wrong. On the real test split it is 0.439, so the model did no better than that guess. I did not edit criteria.md.
+- *Why not a labeling problem on one boundary:* an inconsistent boundary would show up as two labels swapping, like hot_take and analysis. The matrix has no swaps because the model never predicts those labels at all.
+- *Contributing factor, too few examples:* analysis has 41 posts in labels.csv with only 6 in the test split, and share has 47 with 7 in the test split. Question has 118 and hot_take has 63. With so few steps, the thin labels give the model even less to pick up.
+- *Hard cases on the same pairs:* `data/hard_cases.md` has 31 hard cases. The pairs that match the matrix errors are share or question (6), analysis or question (4 plus 1 listed the other way, so 5) and hot_take or question (4 plus 1, so 5). That is 16 of the 31, so these are real fuzzy pairs, but they are only a small part of why the model predicted question for everything. The biggest hard pair, analysis or hot_take at 8 cases, can't be checked here because the model never predicted either one.
+
+**C3 and C4 were met, so no diagnosis.**
+
+**C5 is technically MET but hollow.** Every seed is above 0.15, so by the rule I wrote it is met. But the model predicts question for every post, so the confidence only measures how question-like a post looks, not whether the model knows when it is right. The most-confident third is just the posts that look most like questions, and those are the ones the all-question guess gets right. With 13 posts per third it is also a weak signal. I'm not counting this as evidence that the confidence score is useful.
 
 
 
